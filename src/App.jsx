@@ -175,101 +175,156 @@ export default function App() {
         </div>
       </section>
 
-            {/* PROCESS (stepper dynamique) */}
+           {/* PROCESS (visuel + schémas) */}
       <section id="process" className="relative border-t border-black/5">
+        {/* blobs décor */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -top-24 left-10 h-56 w-56 rounded-full bg-[--pastel-blue] blur-[80px]" />
+          <div className="absolute -bottom-16 right-10 h-72 w-72 rounded-full bg-[--pastel-rose] blur-[90px]" />
+        </div>
+      
         <div className="mx-auto max-w-7xl px-4 py-16">
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">Comment ça marche</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">
+            Un parcours simple, ultra visuel
+          </h2>
+          <p className="mt-2 text-center text-neutral-700">
+            Vous voyez, vous ajustez, vous décidez. On s’occupe du reste.
+          </p>
       
-          <div className="mt-12 relative">
-            {/* Connecteurs (desktop) */}
-            <div className="hidden lg:block absolute left-0 right-0 top-16 h-0.5 bg-black/10" />
+          {/* rail + étapes */}
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
+            {/* Col schema (LG) */}
+            <div className="hidden lg:block lg:col-span-5">
+              <div className="rounded-3xl border border-black/10 bg-white p-6 hero-shadow">
+                <p className="text-sm font-medium text-neutral-900">Schéma d’implantation</p>
+                <div className="mt-3 rounded-2xl border border-black/10 bg-gradient-to-br from-[--pastel-blue] via-white to-[--pastel-rose] p-4">
+                  {/* petit plan stylisé */}
+                  <div className="aspect-[4/3] w-full rounded-xl bg-white grid grid-cols-6 grid-rows-4 gap-1 p-2">
+                    <div className="col-span-4 row-span-2 rounded bg-black/5" />
+                    <div className="col-span-2 row-span-1 rounded bg-black/10" />
+                    <div className="col-span-2 row-span-2 rounded bg-black/5" />
+                    <div className="col-span-3 row-span-1 rounded bg-black/10" />
+                    <div className="col-span-1 row-span-1 rounded bg-black/5" />
+                  </div>
+                </div>
       
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  n: 1,
-                  title: "Composez votre projet",
-                  desc: "Pièces, surface, options. Total calculé en direct.",
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 7h18M3 12h18M3 17h18"/>
-                    </svg>
-                  )
-                },
-                {
-                  n: 2,
-                  title: "Onboarding rapide",
-                  desc: "Quelques minutes pour comprendre votre espace et vos envies.",
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 6v12M6 12h12"/>
-                    </svg>
-                  )
-                },
-                {
-                  n: 3,
-                  title: "Rendu photoréaliste",
-                  desc: "Avant/Après clair. Vous validez, on ajuste si besoin.",
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 13l2-2 3 3 3-3"/>
-                    </svg>
-                  )
-                },
-                {
-                  n: 4,
-                  title: "Livrable + shopping list",
-                  desc: "PDF soigné, liens d’achat, plan d’action concret.",
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M14 2v6h6"/>
-                    </svg>
-                  )
-                }
-              ].map((s, i) => (
-                <div key={i} className="relative">
-                  {/* pastille + card */}
-                  <div className="relative rounded-2xl border border-black/10 bg-white p-6 h-full">
-                    <div className="flex items-center gap-3">
-                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[--pastel-blue] text-ink">
-                        {s.icon}
-                      </span>
-                      <div className="text-sm font-semibold text-neutral-900">Étape {s.n}</div>
+                <div className="mt-6 grid grid-cols-3 gap-3 text-xs text-neutral-700">
+                  <div className="rounded-xl border border-black/10 bg-white p-3">
+                    <p className="font-medium">Mesures</p>
+                    <p className="mt-1">Plan, fenêtres, portes</p>
+                  </div>
+                  <div className="rounded-xl border border-black/10 bg-white p-3">
+                    <p className="font-medium">Contraintes</p>
+                    <p className="mt-1">Prises, circulation</p>
+                  </div>
+                  <div className="rounded-xl border border-black/10 bg-white p-3">
+                    <p className="font-medium">Style</p>
+                    <p className="mt-1">Scandi, moderne…</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            {/* Col étapes (rail horizontal) */}
+            <div className="lg:col-span-7">
+              <div className="relative">
+                {/* rail */}
+                <div className="absolute left-0 right-0 top-9 h-0.5 bg-black/10 hidden md:block" />
+      
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Étape 1 */}
+                  <div className="relative">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[--pastel-blue] text-ink hero-bump">
+                      1
                     </div>
-                    <h3 className="mt-3 font-medium">{s.title}</h3>
-                    <p className="mt-1 text-sm text-neutral-700">{s.desc}</p>
+                    <div className="mt-3 rounded-2xl border border-black/10 bg-white p-5 hover:shadow-md transition">
+                      <div className="flex items-center gap-2 text-xs text-neutral-600">
+                        <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+                        Brief simplifié
+                      </div>
+                      <h3 className="mt-2 font-medium">Composez votre projet</h3>
+                      <p className="mt-1 text-sm text-neutral-700">
+                        Pièces, surface, options. Total calculé en direct.
+                      </p>
+                      {/* mini mock formulaire */}
+                      <div className="mt-4 rounded-xl border border-black/10 bg-black/5 p-3 text-xs text-neutral-600">
+                        <div className="flex gap-2">
+                          <div className="h-6 grow rounded bg-white" />
+                          <div className="h-6 w-16 rounded bg-white" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
       
-                  {/* connecteur entre cartes (desktop) */}
-                  {i < 3 && (
-                    <div className="hidden lg:block absolute top-16 -right-3 w-6 h-0.5 bg-black/10" />
-                  )}
-                </div>
-              ))}
-            </div>
+                  {/* Étape 2 */}
+                  <div className="relative">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[--pastel-green] text-ink hero-bump">
+                      2
+                    </div>
+                    <div className="mt-3 rounded-2xl border border-black/10 bg-white p-5 hover:shadow-md transition">
+                      <div className="flex items-center gap-2 text-xs text-neutral-600">
+                        <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+                        Étude & maquette
+                      </div>
+                      <h3 className="mt-2 font-medium">Rendu photoréaliste</h3>
+                      <p className="mt-1 text-sm text-neutral-700">
+                        Avant/Après clair. Vous validez, on ajuste si besoin.
+                      </p>
+                      <div className="mt-4 overflow-hidden rounded-xl border border-black/10">
+                        <img
+                          src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2a59?q=80&w=1200&auto=format&fit=crop"
+                          alt=""
+                          className="h-28 w-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
       
-            {/* CTA secondaire */}
-            <div className="mt-10 flex items-center justify-center">
-              <a href="#simulateur" className="inline-flex items-center rounded-xl bg-[--brand] px-5 py-3 text-sm font-medium text-ink hover:brightness-110">
-                Démarrer le simulateur
-              </a>
+                  {/* Étape 3 */}
+                  <div className="relative">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[--pastel-rose] text-ink hero-bump">
+                      3
+                    </div>
+                    <div className="mt-3 rounded-2xl border border-black/10 bg-white p-5 hover:shadow-md transition">
+                      <div className="flex items-center gap-2 text-xs text-neutral-600">
+                        <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+                        Livrables
+                      </div>
+                      <h3 className="mt-2 font-medium">PDF + Shopping list</h3>
+                      <p className="mt-1 text-sm text-neutral-700">
+                        Plan d’action clair, liens d’achat, prêt à commander.
+                      </p>
+                      {/* vignettes livrables */}
+                      <div className="mt-4 grid grid-cols-3 gap-2">
+                        <div className="h-14 rounded-lg border border-black/10 bg-white grid place-items-center text-[10px]">
+                          PDF
+                        </div>
+                        <div className="h-14 rounded-lg border border-black/10 bg-white grid place-items-center text-[10px]">
+                          Avant/Après
+                        </div>
+                        <div className="h-14 rounded-lg border border-black/10 bg-white grid place-items-center text-[10px]">
+                          Shop list
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      
+                {/* CTA */}
+                <div className="mt-10 flex items-center justify-center">
+                  <a
+                    href="#simulateur"
+                    className="inline-flex items-center rounded-xl bg-[--brand] px-5 py-3 text-sm font-medium text-ink hover:brightness-110"
+                  >
+                    Démarrer le simulateur
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-
-      <section id="simulateur" className="relative border-t border-black/5">
-        <div className="mx-auto max-w-5xl px-4 py-16">
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Simulateur de projet</h2>
-          <p className="mt-2 text-neutral-700">Calculez votre budget en direct. Vos choix sont sauvegardés sur votre appareil.</p>
-          <div className="mt-8 rounded-2xl border border-black/10 bg-white p-4">
-            <div className="aspect-[16/9] w-full overflow-hidden rounded-xl border border-black/10 bg-black/5 flex items-center justify-center text-neutral-500">
-              (Intégration du simulateur ici — Tally / Softr / widget custom)
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section id="faq" className="relative border-t border-black/5">
         <div className="mx-auto max-w-7xl px-4 py-16">
