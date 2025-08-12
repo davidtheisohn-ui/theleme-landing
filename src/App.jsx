@@ -1,50 +1,93 @@
 export default function App() {
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-50 bg-paper/70 backdrop-blur border-b border-black/5">
-        <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur border-b border-black/5">
+        <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2">
-            <span className="inline-block h-6 w-6 rounded bg-[--brand]"></span>
+            <span className="inline-block h-7 w-7 rounded-lg bg-gradient-to-tr from-[--pastel-blue] to-[--brand]"></span>
             <span className="font-semibold tracking-tight">Theleme</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-neutral-600">
-            <a href="#features" className="hover:text-black smooth">Pourquoi nous</a>
-            <a href="#process" className="hover:text-black smooth">Comment ça marche</a>
-            <a href="#pricing" className="hover:text-black smooth">Tarifs</a>
-            <a href="#faq" className="hover:text-black smooth">FAQ</a>
+          <nav className="hidden md:flex items-center gap-7 text-sm text-neutral-700">
+            <a href="#benefits" className="hover:text-black">Avantages</a>
+            <a href="#process" className="hover:text-black">Process</a>
+            <a href="#simulateur" className="hover:text-black">Simulateur</a>
+            <a href="#faq" className="hover:text-black">FAQ</a>
           </nav>
-          <div className="flex items-center gap-3">
-            <a href="#simulateur" className="hidden sm:inline-block text-sm text-neutral-600 hover:text-black smooth">Simuler</a>
-            <a href="#cta" className="inline-flex items-center gap-2 rounded-xl bg-black text-white px-4 py-2 text-sm smooth">Commencer</a>
+          <div className="flex items-center gap-2">
+            <a href="#simulateur" className="hidden sm:inline-flex items-center rounded-xl border border-black/10 bg-white px-4 py-2 text-sm hover:bg-black/5">Estimer</a>
+            <a href="#cta" className="inline-flex items-center rounded-xl bg-black text-white px-4 py-2 text-sm">Commencer</a>
           </div>
         </div>
       </header>
 
-      <section className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[580px] w-[580px] rounded-full bg-[--pastel-blue] blur-[120px]"></div>
-          <div className="absolute -bottom-40 -right-20 h-[420px] w-[420px] rounded-full bg-[--pastel-rose] blur-[100px]"></div>
-        </div>
-        <div className="mx-auto max-w-7xl px-4 pt-20 pb-24">
-          <div className="max-w-3xl">
-            <p className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs text-neutral-600">
-              <span className="h-1.5 w-1.5 rounded-full bg-[--brand]"></span>
-              Interior design, minus the drama
-            </p>
-            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight">
-              Voir le résultat avant de bouger un meuble.
-            </h1>
-            <p className="mt-5 max-w-2xl text-neutral-700">
-              Des rendus photoréalistes, un process simple, et des choix qui ont du sens.
-              On s’adapte à votre rythme, on livre en quelques jours.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#simulateur" className="inline-flex items-center justify-center rounded-xl bg-[--brand] px-5 py-3 text-sm font-medium text-ink hover:brightness-110 smooth">Démarrer mon projet</a>
-              <a href="#features" className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-white px-5 py-3 text-sm hover:bg-black/5 smooth">Voir comment</a>
+
+     <section className="relative">
+        <div className="mx-auto max-w-7xl px-4 py-10">
+          <div className="rounded-[28px] border border-black/5 bg-gradient-to-br from-[--pastel-blue] via-white to-[--pastel-rose] p-1">
+            <div className="rounded-[24px] bg-white/70 backdrop-blur">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:p-12">
+                {/* Col gauche : texte */}
+                <div className="flex flex-col justify-center">
+                  <p className="inline-flex items-center gap-2 w-fit rounded-full border border-black/10 bg-white px-3 py-1 text-xs text-neutral-700">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[--brand]"></span>
+                    Interior design, minus the drama
+                  </p>
+                  <h1 className="mt-5 text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">
+                    Un design expert, sur-mesure<br />à partir de 80€
+                  </h1>
+                  <p className="mt-4 text-neutral-700">
+                    On refait votre intérieur — pas votre compte en banque.
+                  </p>
+      
+                  {/* Checkmarks */}
+                  <ul className="mt-6 space-y-2 text-sm text-neutral-800">
+                    {[
+                      "Conception par nos designers humains, pas par une IA",
+                      "Livré en 5 jours ouvrés",
+                      "Design sur mesure",
+                    ].map((t,i)=>(
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[--pastel-blue]">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                            <path d="M20 7L9 18l-5-5" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
+                        <span>{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+      
+                  {/* CTA */}
+                  <div className="mt-7 flex gap-3">
+                    <a href="#simulateur" className="inline-flex items-center rounded-xl bg-[--brand] px-5 py-3 text-sm font-medium text-ink hover:brightness-110">
+                      Démarrer mon projet
+                    </a>
+                    <a href="#benefits" className="inline-flex items-center rounded-xl border border-black/10 bg-white px-5 py-3 text-sm hover:bg-black/5">
+                      Voir les avantages
+                    </a>
+                  </div>
+                </div>
+      
+                {/* Col droite : image */}
+                <div className="relative">
+                  <div className="h-full w-full overflow-hidden rounded-[20px] border border-black/10 bg-black/5">
+                    <img
+                      src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2a59?q=80&w=1600&auto=format&fit=crop"
+                      alt="Exemple de rendu d'intérieur"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  {/* badge coin */}
+                  <div className="absolute -top-3 -right-3 rounded-xl bg-white shadow-sm border border-black/10 px-3 py-1.5 text-xs">
+                    Rendu photoréaliste
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
 
       <section id="features" className="relative border-t border-black/5">
         <div className="mx-auto max-w-7xl px-4 py-16">
