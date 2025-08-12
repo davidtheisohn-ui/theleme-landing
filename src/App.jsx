@@ -132,27 +132,89 @@ export default function App() {
         </div>
       </section>
 
+            {/* PROCESS (stepper dynamique) */}
       <section id="process" className="relative border-t border-black/5">
         <div className="mx-auto max-w-7xl px-4 py-16">
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Comment ça marche</h2>
-          <ol className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {t:'Composez votre projet', d:'Sélection des pièces, surface, options. Total calculé en direct.'},
-              {t:'Onboarding', d:'Quelques minutes pour comprendre votre espace et vos envies.'},
-              {t:'Rendu photoréaliste', d:'Vous validez un avant/après. On ajuste si besoin.'},
-              {t:'Livrable + shopping list', d:'PDF soigné, liens d’achat, plan d’action clair.'}
-            ].map((s,i)=> (
-              <li key={i} className="rounded-2xl border border-black/10 bg-white p-5">
-                <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 shrink-0 rounded-full bg-black/5 flex items-center justify-center text-sm font-semibold">{i+1}</div>
-                  <p className="font-medium">{s.t}</p>
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">Comment ça marche</h2>
+      
+          <div className="mt-12 relative">
+            {/* Connecteurs (desktop) */}
+            <div className="hidden lg:block absolute left-0 right-0 top-16 h-0.5 bg-black/10" />
+      
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  n: 1,
+                  title: "Composez votre projet",
+                  desc: "Pièces, surface, options. Total calculé en direct.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M3 7h18M3 12h18M3 17h18"/>
+                    </svg>
+                  )
+                },
+                {
+                  n: 2,
+                  title: "Onboarding rapide",
+                  desc: "Quelques minutes pour comprendre votre espace et vos envies.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 6v12M6 12h12"/>
+                    </svg>
+                  )
+                },
+                {
+                  n: 3,
+                  title: "Rendu photoréaliste",
+                  desc: "Avant/Après clair. Vous validez, on ajuste si besoin.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
+                      <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 13l2-2 3 3 3-3"/>
+                    </svg>
+                  )
+                },
+                {
+                  n: 4,
+                  title: "Livrable + shopping list",
+                  desc: "PDF soigné, liens d’achat, plan d’action concret.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M14 2v6h6"/>
+                    </svg>
+                  )
+                }
+              ].map((s, i) => (
+                <div key={i} className="relative">
+                  {/* pastille + card */}
+                  <div className="relative rounded-2xl border border-black/10 bg-white p-6 h-full">
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[--pastel-blue] text-ink">
+                        {s.icon}
+                      </span>
+                      <div className="text-sm font-semibold text-neutral-900">Étape {s.n}</div>
+                    </div>
+                    <h3 className="mt-3 font-medium">{s.title}</h3>
+                    <p className="mt-1 text-sm text-neutral-700">{s.desc}</p>
+                  </div>
+      
+                  {/* connecteur entre cartes (desktop) */}
+                  {i < 3 && (
+                    <div className="hidden lg:block absolute top-16 -right-3 w-6 h-0.5 bg-black/10" />
+                  )}
                 </div>
-                <p className="mt-2 text-sm text-neutral-700">{s.d}</p>
-              </li>
-            ))}
-          </ol>
+              ))}
+            </div>
+      
+            {/* CTA secondaire */}
+            <div className="mt-10 flex items-center justify-center">
+              <a href="#simulateur" className="inline-flex items-center rounded-xl bg-[--brand] px-5 py-3 text-sm font-medium text-ink hover:brightness-110">
+                Démarrer le simulateur
+              </a>
+            </div>
+          </div>
         </div>
       </section>
+
 
       <section id="simulateur" className="relative border-t border-black/5">
         <div className="mx-auto max-w-5xl px-4 py-16">
