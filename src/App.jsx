@@ -69,6 +69,68 @@ export default function App() {
           </div>
         </div>
       </section>
+      {/* AVANTAGES */}
+      <section id="benefits" className="relative border-t border-black/5">
+        <div className="mx-auto max-w-7xl px-4 py-16">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">
+            Les avantages qui font la différence
+          </h2>
+      
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "100% humain — pas par une IA",
+                desc: "Nos designers pilotent chaque projet. L’IA nous aide à aller plus vite, mais ne décide pas."
+              },
+              {
+                title: "Livré en 5 jours ouvrés",
+                desc: "Étapes claires, communication fluide, rendu soigné sans attente inutile."
+              },
+              {
+                title: "Budget maîtrisé",
+                desc: "Estimation transparente, options à la carte. Zéro mauvaise surprise."
+              },
+              {
+                title: "Aller-retours inclus",
+                desc: "Vous validez un avant/après. On ajuste jusqu’au « c’est parfait »."
+              },
+              {
+                title: "Shopping list prête à commander",
+                desc: "Références cohérentes avec votre style et votre budget, liens directs."
+              },
+              {
+                title: "Paiement sécurisé (Stripe)",
+                desc: "Facture automatique par e-mail et support réactif."
+              }
+            ].map((b, i) => (
+              <div key={i} className="rounded-2xl border border-black/10 bg-white p-6">
+                <div className="flex items-start gap-3">
+                  {/* icône check minimaliste */}
+                  <span className="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[--pastel-blue]">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                      <path d="M20 7L9 18l-5-5" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <p className="font-medium">{b.title}</p>
+                    <p className="mt-1 text-sm text-neutral-700">{b.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+      
+          {/* Bandeau de réassurance */}
+          <div className="mt-10 rounded-2xl border border-black/10 bg-white p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <p className="text-sm text-neutral-800">
+              Pas sûr de votre choix ? On commence petit, on ajuste vite, on ne force jamais.
+            </p>
+            <a href="#simulateur" className="inline-flex items-center rounded-xl bg-[--brand] px-5 py-3 text-sm font-medium text-ink hover:brightness-110">
+              Estimer mon projet
+            </a>
+          </div>
+        </div>
+      </section>
 
       <section id="process" className="relative border-t border-black/5">
         <div className="mx-auto max-w-7xl px-4 py-16">
