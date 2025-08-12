@@ -21,9 +21,16 @@ export default function App() {
       </header>
 
 
-     <section className="relative">
+     <section id="hero" className="relative overflow-hidden">
+        {/* Blobs décoratifs */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -top-20 -left-10 h-72 w-72 rounded-full blob blob-blue"></div>
+          <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full blob blob-rose"></div>
+        </div>
+      
+        {/* Carte hero */}
         <div className="mx-auto max-w-7xl px-4 py-10">
-          <div className="rounded-[28px] border border-black/5 bg-gradient-to-br from-[--pastel-blue] via-white to-[--pastel-rose] p-1">
+          <div className="rounded-[28px] border border-black/5 bg-gradient-to-br from-[--pastel-blue] via-white to-[--pastel-rose] p-1 hero-shadow">
             <div className="rounded-[24px] bg-white/70 backdrop-blur">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:p-12">
                 {/* Col gauche : texte */}
@@ -32,19 +39,18 @@ export default function App() {
                     <span className="h-1.5 w-1.5 rounded-full bg-[--brand]"></span>
                     Interior design, minus the drama
                   </p>
-                  <h1 className="mt-5 text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">
-                    Un design expert, sur-mesure<br />à partir de 80€
+                  <h1 className="mt-5 text-4xl sm:text-5xl font-semibold leading-tight tracking-tight fade-up">
+                    Voir le résultat avant de bouger un meuble.
                   </h1>
-                  <p className="mt-4 text-neutral-700">
-                    On refait votre intérieur — pas votre compte en banque.
+                  <p className="mt-4 text-neutral-700 fade-up fade-up-delay">
+                    Des rendus photoréalistes, un process simple, et des choix qui ont du sens.
                   </p>
       
-                  {/* Checkmarks */}
-                  <ul className="mt-6 space-y-2 text-sm text-neutral-800">
+                  <ul className="mt-6 space-y-2 text-sm text-neutral-800 fade-up fade-up-delay">
                     {[
                       "Conception par nos designers humains, pas par une IA",
                       "Livré en 5 jours ouvrés",
-                      "Design sur mesure",
+                      "Design sur mesure"
                     ].map((t,i)=>(
                       <li key={i} className="flex items-start gap-2">
                         <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[--pastel-blue]">
@@ -57,14 +63,9 @@ export default function App() {
                     ))}
                   </ul>
       
-                  {/* CTA */}
                   <div className="mt-7 flex gap-3">
-                    <a href="#simulateur" className="inline-flex items-center rounded-xl bg-[--brand] px-5 py-3 text-sm font-medium text-ink hover:brightness-110">
-                      Démarrer mon projet
-                    </a>
-                    <a href="#benefits" className="inline-flex items-center rounded-xl border border-black/10 bg-white px-5 py-3 text-sm hover:bg-black/5">
-                      Voir les avantages
-                    </a>
+                    <a href="#simulateur" className="inline-flex items-center rounded-xl bg-[--brand] px-5 py-3 text-sm font-medium text-ink hover:brightness-110 hero-shadow">Démarrer mon projet</a>
+                    <a href="#benefits" className="inline-flex items-center rounded-xl border border-black/10 bg-white px-5 py-3 text-sm hover:bg-black/5">Voir les avantages</a>
                   </div>
                 </div>
       
@@ -77,7 +78,6 @@ export default function App() {
                       className="h-full w-full object-cover"
                     />
                   </div>
-                  {/* badge coin */}
                   <div className="absolute -top-3 -right-3 rounded-xl bg-white shadow-sm border border-black/10 px-3 py-1.5 text-xs">
                     Rendu photoréaliste
                   </div>
@@ -87,8 +87,7 @@ export default function App() {
           </div>
         </div>
       </section>
-
-
+      
       <section id="features" className="relative border-t border-black/5">
         <div className="mx-auto max-w-7xl px-4 py-16">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">Ce qui change tout, sans tout changer</h2>
@@ -113,7 +112,11 @@ export default function App() {
         </div>
       </section>
       {/* AVANTAGES */}
-      <section id="benefits" className="relative border-t border-black/5">
+       <section id="benefits" className="relative border-t border-black/5 overflow-hidden">
+        {/* Blobs décoratifs */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -top-10 right-16 h-64 w-64 rounded-full blob blob-green"></div>
+        </div>
         <div className="mx-auto max-w-7xl px-4 py-16">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">
             Les avantages qui font la différence
