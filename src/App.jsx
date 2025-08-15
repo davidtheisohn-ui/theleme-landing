@@ -82,7 +82,7 @@ export default function App(){
       {/* PROCESS 2x2 */}
       <section id="process" className="relative border-t border-black/5">
         <div className="mx-auto max-w-7xl px-4 py-16">
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">Un parcours <span className="font-semibold">simple</span> mais <span className="font-semibold">exhaustif</span></h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">Un parcours <span className="font-semibold">exhaustivement simple</span></h2>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {n:1,t:'Passer commande ou réserver un appel',d:'Choisissez une formule ou posez vos questions. Tout est clair.',img:'/images/step-brief.png'},
