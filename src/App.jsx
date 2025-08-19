@@ -110,14 +110,20 @@ export default function App(){
 {/* VALEURS */}
       <section id="valeurs" className="reveal py-16">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-center"><span className="block">C’est votre style.</span><span className="block">On l’a juste bien rangé.</span></h2>
-          <div className="grid md:grid-cols-4 gap-6 mt-8">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-center text-[#1a365d] mb-4">
+            <span className="block">C'est votre style.</span>
+            <span className="block">On l'a juste bien rangé.</span>
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {VALS.map((v,i)=>(
-              <div key={i} className="bubble card-shadow p-6 relative overflow-hidden" style={{"--halo": v.halo}}>
-                <img src={v.icon} alt="" className="w-14 h-14 rounded-2xl mb-4 relative z-10"/>
-                <div className="bubble-bg" />
-                <div className="font-semibold">{i+1}. {v.title}</div>
-                <p className="text-sm text-neutral-600 mt-2">{v.text}</p>
+              <div key={i} className="rounded-3xl p-8 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300" style={{backgroundColor: v.bgColor}}>
+                <div className="relative z-10">
+                  <div className="text-2xl font-bold text-[#1a365d] mb-4">{i+1}. {v.title}</div>
+                  <p className="text-[#1a365d] text-sm leading-relaxed mb-6">{v.text}</p>
+                  <div className="mt-auto">
+                    <img src={v.mockup} alt="" className="w-full h-32 object-contain"/>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -345,9 +351,29 @@ export default function App(){
 
 
 const VALS = [
-  { icon:'/images/v1.svg', title:'Transformez votre espace, sans effort', text:'Nous repensons votre intérieur pour qu’il soit à la fois beau, fonctionnel et parfaitement adapté à votre mode de vie.', halo:'#FAD1DC' },
-  { icon:'/images/v2.svg', title:'Pensé pour vous, pas (que) pour Instagram', text:'Vos contraintes deviennent des solutions. Vos goûts, notre point de départ. Fonctionnel. Élégant. Cohérent.', halo:'#D6E6FF' },
-  { icon:'/images/v3.svg', title:'Voir le résultat avant de bouger un meuble', text:'Des rendus réalistes pour décider en toute confiance. On remplace le doute par un “wow”.', halo:'#FFF3B0' },
-  { icon:'/images/v4.svg', title:'Avancer à votre rythme', text:'Un process fluide, sans rendez‑vous inutiles ni devis flous. On s’occupe du reste.', halo:'#EADCFD' }
+  { 
+    title:'Design Inoubliable', 
+    text:'Nous créons des intérieurs qui marquent les esprits, renforcent votre identité et garantissent que votre espace laisse une impression durable.', 
+    bgColor:'#FFB3BA',
+    mockup:'/images/hero1.svg'
+  },
+  { 
+    title:'Allure Professionnelle Premium', 
+    text:'Un rendu impeccable et sophistiqué sur tous supports et dans tous les espaces, pour une image de marque cohérente.', 
+    bgColor:'#BFDBFE',
+    mockup:'/images/hero2.svg'
+  },
+  { 
+    title:'Design Intemporel', 
+    text:'Nous concevons des espaces qui résisteront à l\'épreuve du temps et vous prépareront au succès à long terme.', 
+    bgColor:'#D4F1A4',
+    mockup:'/images/hero3.svg'
+  },
+  { 
+    title:'Adapté à Votre Univers', 
+    text:'Nos créations sont guidées par une recherche approfondie, garantissant un attrait direct auprès de votre clientèle cible.', 
+    bgColor:'#E0C3FC',
+    mockup:'/images/hero4.svg'
+  }
 ]
 
