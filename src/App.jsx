@@ -1,6 +1,16 @@
 import React from 'react'
 function EUR(v){ return new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(v) }
 
+React.useEffect(() => {
+  const els = Array.from(document.querySelectorAll('.reveal, .reveal-stagger'))
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in') }
+    })
+  },{threshold:.15, rootMargin:"0px 0px -10% 0px"})
+  els.forEach(el=>io.observe(el))
+  return ()=> io.disconnect()
+
 export default function App(){
   // portfolio tabs
   const [tab, setTab] = React.useState('salon')
@@ -60,12 +70,12 @@ export default function App(){
           </a>
           
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#valeurs" className="hover:text-black">Valeurs</a>
             <a href="#portfolio" className="hover:text-black">Portfolio</a>
             <a href="#process" className="hover:text-black">Process</a>
             <a href="#configurateur" className="hover:text-black">Configurateur</a>
             <a href="#faq" className="hover:text-black">FAQ</a>
           </nav>
+
           <div className="flex items-center gap-2">
             <a href="#configurateur" className="hidden sm:inline-flex items-center rounded-xl border border-black/10 bg-white px-4 py-2 text-sm hover:bg-black/5">Configurer</a>
             <button onClick={()=>setCheckout(true)} className="inline-flex items-center rounded-xl bg-black text-white px-4 py-2 text-sm">Passer commande</button>
@@ -107,17 +117,32 @@ export default function App(){
         </div>
       </section>
 
-{/* VALEURS */}
+      {/* VALEURS */}
       <section id="valeurs" className="reveal py-16">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-center"><span className="block">C’est votre style.</span><span className="block">On l’a juste bien rangé.</span></h2>
-          <div className="grid md:grid-cols-4 gap-6 mt-8">
+          <h2 className="text-center text-3xl md:text-4xl font-semibold tracking-tight mb-8">
+            <span className="block">C’est votre style.</span>
+            <span className="block">On l’a juste bien rangé.</span>
+          </h2>
+      
+          <div className="reveal-stagger grid md:grid-cols-4 gap-6">
             {VALS.map((v,i)=>(
-              <div key={i} className="bubble card-shadow p-6 relative overflow-hidden" style={{"--halo": v.halo}}>
-                <img src={v.icon} alt="" className="w-14 h-14 rounded-2xl mb-4 relative z-10"/>
-                <div className="bubble-bg" />
-                <div className="font-semibold">{i+1}. {v.title}</div>
-                <p className="text-sm text-neutral-600 mt-2">{v.text}</p>
+              <div key={i}
+                   className="relative rounded-3xl overflow-hidden"
+                   style={{background: v.bg}}>
+                {/* contenu */}
+                <div className="p-6 relative z-10">
+                  <div className="text-sm font-semibold opacity-70 mb-2">{i+1}.</div>
+                  <h3 className="text-xl font-bold leading-tight">{v.title}</h3>
+                  {v.text && <p className="mt-3 text-sm opacity-80">{v.text}</p>}
+                </div>
+                {/* image / plan / rendu en bas */}
+                <div className="absolute inset-x-0 bottom-0 h-36 flex items-end justify-center pointer-events-none"
+                     style={{mixBlendMode: 'multiply', opacity:.95}}>
+                  <img src={v.img} alt="" className="w-full h-full object-cover"/>
+                </div>
+                {/* léger gloss */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-white/0 to-white/30 pointer-events-none"/>
               </div>
             ))}
           </div>
@@ -279,7 +304,35 @@ export default function App(){
                 <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                   <div className="rounded-xl border border-black/10 bg-white p-3"><p className="text-neutral-600">Type</p><p className="font-medium">{scope}</p></div>
                   <div className="rounded-xl border border-black/10 bg-white p-3"><p className="text-neutral-600">Surface</p><p className="font-medium">{surface} m²</p></div>
-                  <div className="rounded-xl border border-black/10 bg-white p-3"><p className="text-neutral-600">Pièces</p><p className="font-medium">{Object.entries(rooms).filter(([k,q])=>q>0).map(([k,q])=>`${k}×${q}`).join(', ')||'—'}</p></div>
+                  <div className="rounded-xl border border-black/10 bg-white p-3">
+                    <p className="text-xs text-neutral-600">Panier</p>
+                    <ul className="mt-2 divide-y divide-black/5">
+                      {Object.entries(rooms)
+                        .filter(([k,q]) => q > 0)
+                        .map(([k,q]) => {
+                          const labels = {
+                            salon:'Salon',
+                            cuisine:'Cuisine',
+                            chambre:'Chambre',
+                            sdb:'Salle de bain',
+                            bureau:'Bureau',
+                            pieceAVivre:'Pièce à vivre',
+                            exterieurS:'Extérieur <10m²',
+                            exterieurL:'Extérieur ≥10m²'
+                          }
+                          return (
+                            <li key={k} className="flex items-center gap-3 py-1.5">
+                              <span className="inline-block w-2 h-2 rounded-full bg-brand"></span>
+                              <span className="text-sm">{labels[k] || k}</span>
+                              <span className="ml-auto text-sm font-semibold">×{q}</span>
+                            </li>
+                          )
+                        })}
+                      {Object.values(rooms).every(q=>q===0) && (
+                        <li className="py-1.5 text-sm text-neutral-500">Aucune pièce sélectionnée</li>
+                      )}
+                    </ul>
+                  </div>
                   <div className="rounded-xl border border-black/10 bg-white p-3"><p className="text-neutral-600">Options</p><p className="font-medium">{Object.entries(opts).filter(([k,v])=>v).map(([k])=>k).join(', ')||'—'}</p></div>
                 </div>
                 <div className="mt-4 border-t border-black/10 pt-4 flex items-center justify-between">
@@ -345,9 +398,29 @@ export default function App(){
 
 
 const VALS = [
-  { icon:'/images/v1.svg', title:'Transformez votre espace, sans effort', text:'Nous repensons votre intérieur pour qu’il soit à la fois beau, fonctionnel et parfaitement adapté à votre mode de vie.', halo:'#FAD1DC' },
-  { icon:'/images/v2.svg', title:'Pensé pour vous, pas (que) pour Instagram', text:'Vos contraintes deviennent des solutions. Vos goûts, notre point de départ. Fonctionnel. Élégant. Cohérent.', halo:'#D6E6FF' },
-  { icon:'/images/v3.svg', title:'Voir le résultat avant de bouger un meuble', text:'Des rendus réalistes pour décider en toute confiance. On remplace le doute par un “wow”.', halo:'#FFF3B0' },
-  { icon:'/images/v4.svg', title:'Avancer à votre rythme', text:'Un process fluide, sans rendez‑vous inutiles ni devis flous. On s’occupe du reste.', halo:'#EADCFD' }
+  {
+    title: "Transformez votre espace, sans effort",
+    text: "Nous repensons votre intérieur pour qu’il soit à la fois beau, fonctionnel et parfaitement adapté à votre mode de vie.",
+    bg: "linear-gradient(180deg, #FAD1DC 0%, #FFE7EE 100%)",
+    img: "/images/valeurs/1.jpg" // placeholder photo canapé/coin salon
+  },
+  {
+    title: "Pensé pour vous, pas (que) pour Instagram",
+    text: "Vos contraintes deviennent des solutions. Vos goûts, notre point de départ. Fonctionnel. Élégant. Cohérent.",
+    bg: "linear-gradient(180deg, #D6E6FF 0%, #ECF3FF 100%)",
+    img: "/images/valeurs/2.png" // plan/floorplan bleu
+  },
+  {
+    title: "Voir le résultat avant de bouger un meuble",
+    text: "Des rendus réalistes pour décider en toute confiance. On remplace le doute par un “wow”.",
+    bg: "linear-gradient(180deg, #FFF3B0 0%, #FFF8CF 100%)",
+    img: "/images/valeurs/3.jpg" // rendu 3D chambre
+  },
+  {
+    title: "Avancez à votre rythme",
+    text: "Un process fluide, sans RDV inutiles ni devis flous. Vous avancez à votre rythme — nous, on s’occupe du reste.",
+    bg: "linear-gradient(180deg, #EADCFD 0%, #F4EFFF 100%)",
+    img: "/images/valeurs/4.jpg" // rendu 3D salon
+  }
 ]
 
