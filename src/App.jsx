@@ -253,8 +253,8 @@ export default function App(){
                     <div className="rounded-2xl border border-black/10 bg-white p-5">
                       <p className="text-sm font-medium">Extérieur à remodeler</p>
                       <div className="mt-3 space-y-3">
-                        <div className="flex items-center justify-between"><span>Extérieur <10m²</span><div className="flex items-center gap-2"><button onClick={()=>setExtS(v=>Math.max(0,v-1))} className="h-8 w-8 rounded-lg border border-black/10">−</button><div className=\"w-10 text-center">{extS}</div><button onClick={()=>setExtS(v=>v+1)} className=\"h-8 w-8 rounded-lg border border-black/10">+</button></div></div>
-                        <div className="flex items-center justify-between"><span>Extérieur ≥10m²</span><div className="flex items-center gap-2"><button onClick={()=>setExtL(v=>Math.max(0,v-1))} className="h-8 w-8 rounded-lg border border-black/10">−</button><div className=\"w-10 text-center">{extL}</div><button onClick={()=>setExtL(v=>v+1)} className=\"h-8 w-8 rounded-lg border border-black/10">+</button></div></div>
+                        <div className="flex items-center justify-between"><span>Extérieur &lt;10m²</span><div className="flex items-center gap-2"><button onClick={()=>setExtS(v=>Math.max(0,v-1))} className="h-8 w-8 rounded-lg border border-black/10">−</button><div className="w-10 text-center">{extS}</div><button onClick={()=>setExtS(v=>v+1)} className="h-8 w-8 rounded-lg border border-black/10">+</button></div></div>
+                        <div className="flex items-center justify-between"><span>Extérieur &ge;10m²</span><div className="flex items-center gap-2"><button onClick={()=>setExtL(v=>Math.max(0,v-1))} className="h-8 w-8 rounded-lg border border-black/10">−</button><div className="w-10 text-center">{extL}</div><button onClick={()=>setExtL(v=>v+1)} className="h-8 w-8 rounded-lg border border-black/10">+</button></div></div>
                       </div>
                     </div>
                   )}
