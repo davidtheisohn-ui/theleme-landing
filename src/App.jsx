@@ -402,7 +402,7 @@ const VALS = [
     title: "Transformez votre espace, sans effort",
     text: "Nous repensons votre intérieur pour qu’il soit à la fois beau, fonctionnel et parfaitement adapté à votre mode de vie.",
     bg: "linear-gradient(180deg, #FAD1DC 0%, #FFE7EE 100%)",
-    img: "/images/valeurs/1.jpg" // placeholder photo canapé/coin salon
+    img: "/images/valeurs/1.png" // placeholder photo canapé/coin salon
   },
   {
     title: "Pensé pour vous, pas (que) pour Instagram",
