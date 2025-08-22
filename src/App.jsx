@@ -176,7 +176,7 @@ export default function App(){
       </section>
 
       {/* CONFIGURATEUR */}
-      <section id="configurateur" className="reveal relative" border-t border-black/5">
+      <section id="configurateur" className="reveal relative border-t border-black/5">
         <div className="mx-auto max-w-7xl px-4 py-16">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Configurateur</h2>
           <p className="mt-2 text-neutral-700">Composez votre panier en 3 étapes, total en direct.</p>
