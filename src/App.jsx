@@ -352,28 +352,29 @@ export default function App(){
 
 const VALS = [
   { 
-    title:'Design Inoubliable', 
-    text:'Nous créons des intérieurs qui marquent les esprits, renforcent votre identité et garantissent que votre espace laisse une impression durable.', 
-    bgColor:'#FFB3BA',
+   title:'Transformez votre espace, sans effort',
+   text:'Nous repensons votre intérieur pour qu’il soit à la fois beau, fonctionnel et parfaitement adapté à votre mode de vie. Vous choisissez, on sublime.',
+  bgColor:'#FADADD',
     mockup:'/images/hero1.svg'
   },
   { 
-    title:'Allure Professionnelle Premium', 
-    text:'Un rendu impeccable et sophistiqué sur tous supports et dans tous les espaces, pour une image de marque cohérente.', 
+   title:'Pensé pour vous, pas (que) pour Instagram',
+   text:'Vos contraintes deviennent des solutions. Vos goûts, notre point de départ. Fonctionnel. Élégant. Cohérent.',
     bgColor:'#BFDBFE',
     mockup:'/images/hero2.svg'
   },
   { 
-    title:'Design Intemporel', 
-    text:'Nous concevons des espaces qui résisteront à l\'épreuve du temps et vous prépareront au succès à long terme.', 
-    bgColor:'#D4F1A4',
-    mockup:'/images/hero3.svg'
+       title:'Voir le résultat avant de bouger un meuble',
+      text:'Des rendus réalistes pour décider en toute confiance. On remplace le doute par du "wow".',
+      bgColor:'#FEF9C3',
+      mockup:'/images/hero3.svg'
   },
   { 
-    title:'Adapté à Votre Univers', 
-    text:'Nos créations sont guidées par une recherche approfondie, garantissant un attrait direct auprès de votre clientèle cible.', 
-    bgColor:'#E0C3FC',
+   title:'Avancez à votre rythme',
+      text:'Un process fluide, sans RDV inutiles ni devis flous. Vous avancez à votre rythme — nous, on s’occupe du reste.',
+    bgColor:'#F5D0FE',
     mockup:'/images/hero4.svg'
+
   }
 ]
 
