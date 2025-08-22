@@ -115,15 +115,15 @@ export default function App(){
             <span className="block">On l’a juste bien rangé.</span>
           </h2>
       
-          <div className="reveal-stagger grid md:grid-cols-4 gap-6 mt-8">
+         <div className="reveal-stagger grid md:grid-cols-4 gap-6 mt-8 items-stretch">
             {VALS.map((v, i) => (
               <div
                 key={i}
-                className="relative rounded-3xl overflow-hidden shadow ring-1 ring-black/5"
-                style={{ background: v.bg }}
+                className="val-card relative rounded-3xl overflow-hidden shadow ring-1 ring-black/5 flex flex-col"
+                style={{ background: v.bg, minHeight: '260px' }}             // ← hauteur mini
               >
-                {/* Texte au-dessus, avec place pour le visuel bas */}
-                <div className="relative z-20 p-6 pb-20">
+                {/* Contenu au-dessus, on réserve la place du visuel avec pb */}
+                <div className="relative z-20 p-6 pb-24 grow">               {/* ← pb-24 = ~96px */}
                   <div className="text-sm font-semibold opacity-70 mb-2">{i + 1}.</div>
                   <h3 className="text-xl font-bold leading-tight whitespace-normal break-words">
                     {v.title}
@@ -135,23 +135,23 @@ export default function App(){
                   )}
                 </div>
           
-                {/* Visuel collé en bas */}
+                {/* Visuel ancré en bas */}
                 <div
                   aria-hidden
                   className="absolute inset-x-0 bottom-0 pointer-events-none z-10"
                   style={{
-                    height: "38%",
+                    height: '42%',                                           // ← ajuste 38–48% si besoin
                     backgroundImage: `url(${v.img})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center bottom",
-                    backgroundSize: "min(90%, 560px) auto",
-                    mixBlendMode: "multiply",
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center bottom',
+                    backgroundSize: 'min(90%, 560px) auto',
+                    mixBlendMode: 'multiply',
                     opacity: 0.9,
                   }}
                 />
           
-                {/* Voile léger pour lisibilité, sous le texte mais au-dessus du visuel */}
-                <div className="absolute inset-0 z-15 bg-gradient-to-t from-white/0 via-white/0 to-white/30 pointer-events-none" />
+                {/* Voile subtil pour garder le texte lisible */}
+                <div className="absolute inset-0 z-[15] bg-gradient-to-t from-white/0 via-white/0 to-white/30 pointer-events-none" />
               </div>
             ))}
           </div>
