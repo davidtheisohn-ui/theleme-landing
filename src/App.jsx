@@ -117,35 +117,42 @@ export default function App(){
       
           <div className="reveal-stagger grid md:grid-cols-4 gap-6 mt-8">
             {VALS.map((v, i) => (
-             <div
-              key={i}
-              className="relative rounded-3xl overflow-hidden shadow ring-1 ring-black/5"
-              style={{ background: v.bg }}
-            >
-              <div className="p-6 relative z-10">
-                <div className="text-sm font-semibold opacity-70 mb-2">{i + 1}.</div>
-                <h3 className="text-xl font-bold leading-tight">{v.title}</h3>
-                {v.text && <p className="mt-3 text-sm text-neutral-700">{v.text}</p>}
-              </div>
-            
-              {/* visuel collé en bas (ancré) */}
               <div
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 pointer-events-none"
-                style={{
-                  height: "38%",                         // hauteur de la zone visuelle
-                  backgroundImage: `url(${v.img})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center bottom",   // <-- ancré en bas
-                  backgroundSize: "min(90%, 560px) auto",
-                  mixBlendMode: "multiply",
-                  opacity: 0.9,
-                }}
-              />
-            
-              {/* voile léger pour garder le texte lisible */}
-              <div className="absolute inset-0 bg-gradient-to-t from-white/0 via-white/0 to-white/30 pointer-events-none" />
-            </div>
+                key={i}
+                className="relative rounded-3xl overflow-hidden shadow ring-1 ring-black/5"
+                style={{ background: v.bg }}
+              >
+                {/* Texte au-dessus, avec place pour le visuel bas */}
+                <div className="relative z-20 p-6 pb-20">
+                  <div className="text-sm font-semibold opacity-70 mb-2">{i + 1}.</div>
+                  <h3 className="text-xl font-bold leading-tight whitespace-normal break-words">
+                    {v.title}
+                  </h3>
+                  {v.text && (
+                    <p className="mt-3 text-sm text-neutral-700 whitespace-normal break-words">
+                      {v.text}
+                    </p>
+                  )}
+                </div>
+          
+                {/* Visuel collé en bas */}
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 pointer-events-none z-10"
+                  style={{
+                    height: "38%",
+                    backgroundImage: `url(${v.img})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center bottom",
+                    backgroundSize: "min(90%, 560px) auto",
+                    mixBlendMode: "multiply",
+                    opacity: 0.9,
+                  }}
+                />
+          
+                {/* Voile léger pour lisibilité, sous le texte mais au-dessus du visuel */}
+                <div className="absolute inset-0 z-15 bg-gradient-to-t from-white/0 via-white/0 to-white/30 pointer-events-none" />
+              </div>
             ))}
           </div>
         </div>
