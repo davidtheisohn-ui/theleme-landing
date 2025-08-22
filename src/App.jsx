@@ -107,7 +107,7 @@ export default function App(){
       </section>
 
 {/* VALEURS */}
-{/* VALEURS */}
+
       <section id="valeurs" className="reveal py-16">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="text-center text-3xl md:text-4xl font-semibold tracking-tight mb-8">
@@ -117,29 +117,35 @@ export default function App(){
       
           <div className="reveal-stagger grid md:grid-cols-4 gap-6 mt-8">
             {VALS.map((v, i) => (
-              <div
-                key={i}
-                className="relative rounded-3xl overflow-hidden shadow ring-1 ring-black/5"
-                style={{ background: v.bg }}
-              >
-                <div className="p-6 relative z-10">
-                  <div className="text-sm font-semibold opacity-70 mb-2">{i + 1}.</div>
-                  <h3 className="text-xl font-bold leading-tight">{v.title}</h3>
-                  {v.text && <p className="mt-3 text-sm text-neutral-700">{v.text}</p>}
-                </div>
-      
-                {/* visuel en bas, en transparence */}
-                <div className="absolute inset-x-0 bottom-0 h-36 flex items-end justify-center pointer-events-none">
-                  <img
-                    src={v.img}
-                    alt=""
-                    className="w-full h-full object-cover opacity-90 mix-blend-multiply"
-                  />
-                </div>
-      
-                {/* voile léger pour garder le texte lisible */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white/0 via-white/0 to-white/30 pointer-events-none" />
+             <div
+              key={i}
+              className="relative rounded-3xl overflow-hidden shadow ring-1 ring-black/5"
+              style={{ background: v.bg }}
+            >
+              <div className="p-6 relative z-10">
+                <div className="text-sm font-semibold opacity-70 mb-2">{i + 1}.</div>
+                <h3 className="text-xl font-bold leading-tight">{v.title}</h3>
+                {v.text && <p className="mt-3 text-sm text-neutral-700">{v.text}</p>}
               </div>
+            
+              {/* visuel collé en bas (ancré) */}
+              <div
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 pointer-events-none"
+                style={{
+                  height: "38%",                         // hauteur de la zone visuelle
+                  backgroundImage: `url(${v.img})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center bottom",   // <-- ancré en bas
+                  backgroundSize: "min(90%, 560px) auto",
+                  mixBlendMode: "multiply",
+                  opacity: 0.9,
+                }}
+              />
+            
+              {/* voile léger pour garder le texte lisible */}
+              <div className="absolute inset-0 bg-gradient-to-t from-white/0 via-white/0 to-white/30 pointer-events-none" />
+            </div>
             ))}
           </div>
         </div>
@@ -382,28 +388,8 @@ export default function App(){
 
 
 const VALS = [
-  {
-    title: 'Transformez votre espace, sans effort',
-    text: 'Nous repensons votre intérieur…',
-    bg: 'linear-gradient(180deg,#FAD1DC 0%,#FFE7EE 100%)',
-    img: '/images/v1.svg'
-  },
-  {
-    title: 'Pensé pour vous, pas (que) pour Instagram',
-    text: 'Vos contraintes deviennent des solutions…',
-    bg: 'linear-gradient(180deg,#D6E6FF 0%,#ECF3FF 100%)',
-    img: '/images/v2.svg'
-  },
-  {
-    title: 'Voir le résultat avant de bouger un meuble',
-    text: 'Des rendus réalistes pour décider…',
-    bg: 'linear-gradient(180deg,#FFF3B0 0%,#FFF8CF 100%)',
-    img: '/images/v3.svg'
-  },
-  {
-    title: 'Avancez à votre rythme',
-    text: 'Un process fluide, sans RDV inutiles…',
-    bg: 'linear-gradient(180deg,#EADCFD 0%,#F4EFFF 100%)',
-    img: '/images/v4.svg'
-  }
+  { title: "...", text: "...", bg: "linear-gradient(180deg,#FAD1DC 0%,#FFE7EE 100%)", img: "/images/v1.svg" },
+  { title: "...", text: "...", bg: "linear-gradient(180deg,#D6E6FF 0%,#ECF3FF 100%)", img: "/images/v2.svg" },
+  { title: "...", text: "...", bg: "linear-gradient(180deg,#FFF3B0 0%,#FFF8CF 100%)", img: "/images/v3.svg" },
+  { title: "...", text: "...", bg: "linear-gradient(180deg,#EADCFD 0%,#F4EFFF 100%)", img: "/images/v4.svg" },
 ];
