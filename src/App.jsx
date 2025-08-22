@@ -155,7 +155,7 @@ export default function App(){
 
 
       {/* PROCESS 2x2 */}
-      <section id="process" className="reveal relative" border-t border-black/5">
+      <section id="process" className="reveal relative border-t border-black/5">
         <div className="mx-auto max-w-7xl px-4 py-16">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">Un parcours <span className="font-semibold">simple</span> mais <span className="font-semibold">exhaustif</span></h2>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
