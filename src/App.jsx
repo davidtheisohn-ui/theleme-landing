@@ -364,9 +364,28 @@ export default function App(){
 
 
 const VALS = [
-  { title:'Transformez votre espace, sans effort', text:'Nous repensons votre intérieur pour qu’il soit à la fois beau, fonctionnel et parfaitement adapté à votre mode de vie.', bg:'linear-gradient(180deg, #FAD1DC 0%, #FFE7EE 100%)', img:'/images/hero-room.png' },
-  { title:'Pensé pour vous, pas (que) pour Instagram', text:'Vos contraintes deviennent des solutions. Vos goûts, notre point de départ. Fonctionnel. Élégant. Cohérent.', bg:'linear-gradient(180deg, #D6E6FF 0%, #ECF3FF 100%)', img:'/images/step-render.png' },
-  { title:'Voir le résultat avant de bouger un meuble', text:'Des rendus réalistes pour décider en toute confiance. On remplace le doute par un “wow”.', bg:'linear-gradient(180deg, #FFF3B0 0%, #FFF8CF 100%)', img:'/images/step-approve.png' },
-  { title:'Avancer à votre rythme', text:'Un process fluide, sans rendez‑vous inutiles ni devis flous. On s’occupe du reste.', bg:'linear-gradient(180deg, #EADCFD 0%, #F4EFFF 100%)', img:'/images/step-delivery.png' }
-]
-
+  {
+    title: 'Transformez votre espace, sans effort',
+    text: 'Nous repensons votre intérieur…',
+    bg: 'linear-gradient(180deg,#FAD1DC 0%,#FFE7EE 100%)',
+    img: '/images/v1.svg'
+  },
+  {
+    title: 'Pensé pour vous, pas (que) pour Instagram',
+    text: 'Vos contraintes deviennent des solutions…',
+    bg: 'linear-gradient(180deg,#D6E6FF 0%,#ECF3FF 100%)',
+    img: '/images/v2.svg'
+  },
+  {
+    title: 'Voir le résultat avant de bouger un meuble',
+    text: 'Des rendus réalistes pour décider…',
+    bg: 'linear-gradient(180deg,#FFF3B0 0%,#FFF8CF 100%)',
+    img: '/images/v3.svg'
+  },
+  {
+    title: 'Avancez à votre rythme',
+    text: 'Un process fluide, sans RDV inutiles…',
+    bg: 'linear-gradient(180deg,#EADCFD 0%,#F4EFFF 100%)',
+    img: '/images/v4.svg'
+  }
+];
