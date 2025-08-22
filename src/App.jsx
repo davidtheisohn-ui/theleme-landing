@@ -107,25 +107,43 @@ export default function App(){
       </section>
 
 {/* VALEURS */}
+{/* VALEURS */}
       <section id="valeurs" className="reveal py-16">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-center text-3xl md:text-4xl font-semibold tracking-tight mb-8"><span className="block">C’est votre style.</span><span className="block">On l’a juste bien rangé.</span></h2>
-          <div className="grid md:grid-cols-4 gap-6 mt-8">
-            {VALS.map((v,i)=>(
-              <div key={i} className="bubble card-shadow p-6 relative overflow-hidden" style={{"--halo": v.halo}}>
-                <img src={v.icon} alt="" className="w-14 h-14 rounded-2xl mb-4 relative z-10"/>
-                <div className="bubble-bg" />
-                <div className="font-semibold">{i+1}. {v.title}</div>
-                <p className="text-sm text-neutral-600 mt-2">{v.text}</p>
+          <h2 className="text-center text-3xl md:text-4xl font-semibold tracking-tight mb-8">
+            <span className="block">C’est votre style.</span>
+            <span className="block">On l’a juste bien rangé.</span>
+          </h2>
+      
+          <div className="reveal-stagger grid md:grid-cols-4 gap-6 mt-8">
+            {VALS.map((v, i) => (
+              <div
+                key={i}
+                className="relative rounded-3xl overflow-hidden shadow ring-1 ring-black/5"
+                style={{ background: v.bg }}
+              >
+                <div className="p-6 relative z-10">
+                  <div className="text-sm font-semibold opacity-70 mb-2">{i + 1}.</div>
+                  <h3 className="text-xl font-bold leading-tight">{v.title}</h3>
+                  {v.text && <p className="mt-3 text-sm text-neutral-700">{v.text}</p>}
+                </div>
+      
+                {/* visuel en bas, en transparence */}
+                <div className="absolute inset-x-0 bottom-0 h-36 flex items-end justify-center pointer-events-none">
+                  <img
+                    src={v.img}
+                    alt=""
+                    className="w-full h-full object-cover opacity-90 mix-blend-multiply"
+                  />
+                </div>
+      
+                {/* voile léger pour garder le texte lisible */}
+                <div className="absolute inset-0 bg-gradient-to-t from-white/0 via-white/0 to-white/30 pointer-events-none" />
               </div>
             ))}
           </div>
         </div>
       </section>
-
-
-
-
 
       {/* PORTFOLIO */}
       <section id="portfolio" className="reveal py-16">
